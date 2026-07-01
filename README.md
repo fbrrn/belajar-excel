@@ -54,4 +54,37 @@ Selama proses belajar, berikut adalah beberapa kendala teknis yang saya temui da
 
 ---
 
+## 📁 Proyek 3: Sistem Absensi & Checklist Otomatis Interaktif
+
+Proyek ketiga ini berfokus pada pembuatan sistem pencatatan kehadiran (absensi) dan tracker progres kerja yang interaktif menggunakan fitur kotak centang (*checkbox*), perhitungan persentase dinamis, serta visualisasi performa langsung di dalam sel.
+
+### 🛠️ Rumus & Fitur yang Dipelajari
+
+1. **Integrasi Checkbox & Logika Data**
+   * Memanfaatkan fitur kotak centang interaktif yang menghasilkan nilai logika `TRUE` saat dicentang dan `FALSE` saat kosong untuk melacak kehadiran.
+2. **Perhitungan Persentase Kehadiran Dinamis**
+   * Menggunakan kombinasi rumus `=COUNTIF(range; TRUE)/COUNTA(range)` untuk menghitung rasio kehadiran secara akurat berdasarkan total hari yang aktif.
+3. **Visualisasi Data dengan `SPARKLINE`**
+   * Membaca tren progres secara visual langsung di dalam sel menggunakan grafik batang mini (*mini bar chart*) lewat fungsi `=SPARKLINE()`.
+
+---
+
+## ⚠️ Tantangan & Solusi (Lessons Learned)
+
+Selama proses pengerjaan proyek absensi ini, saya menghadapi beberapa tantangan teknis akibat perbedaan ekosistem software dan ketidaksesuaian tutorial, namun berhasil diatasi dengan solusi alternatif:
+
+1. **Keterbatasan Fitur Checkbox bawaan pada Excel 2013**
+   * **Masalah:** Fitur menyisipkan checkbox hanya didukung pada Google Spreadsheet atau Excel Office 365, sementara perangkat lokal saya masih menggunakan Excel 2013.
+   * **Solusi:** Saya beradaptasi dengan berpindah menggunakan platform cloud **Google Sheets** untuk mempraktikkan materi ini agar fitur checkbox interaktif dan pintasan sistem dapat berjalan dengan semestinya.
+
+2. **Kesalahan Output Persentase pada Rumus Tutorial**
+   * **Masalah:** Jika mengikuti tutorial dasar yang hanya menggunakan `=COUNTIF(B19:H19; TRUE)`, hasil yang keluar berupa angka mutlak (1, 2, 3) yang jika diformat ke persen menjadi tidak akurat (100%, 200%).
+   * **Solusi:** Saya memodifikasi rumusnya menjadi `=COUNTIF(B3:H3; TRUE)/COUNTA(B3:H3)`. Dengan membagi total tanda centang dengan total cell data (`COUNTA`), hasil kalkulasi persentase menjadi akurat (misal: 1 centang dari 7 hari menghasilkan angka proporsional ~14%).
+
+3. **Kendala Ketiadaan Font Khusus untuk Fungsi `=REPT` pada Progress Bar**
+   * **Masalah:** Tutorial menyarankan pembuatan progress bar menggunakan rumus pengulangan teks `=REPT("|"; total)` lalu mengubah jenis fontnya. Namun, saya kesulitan menemukan font yang pas di sistem untuk menyatukan karakter tersebut menjadi balok solid.
+   * **Solusi:** Saya mencari alternatif fungsi yang lebih modern dan rapi, yaitu menggunakan rumus `=SPARKLINE(cell; {"charttype"\"bar"; "max"\7; "color"\"blue"})`. Solusi ini menghasilkan indikator visual berupa grafik batang biru yang jauh lebih bersih, solid, dan responsif tanpa bergantung pada ketersediaan font eksternal.
+  
+---
+
 *Catatan: Repository ini akan terus diperbarui seiring dengan berjalannya proses belajar Excel saya.*
